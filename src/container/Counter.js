@@ -7,9 +7,9 @@ const Counter = ({
   ctr,
   onIncCounter,
   onDecCounter,
-  onAdd5,
-  onSubstract5,
-  onReset,
+  onAdd5Counter,
+  onSubstract5Counter,
+  onResetCounter,
 }) => {
   return (
     <div>
@@ -17,9 +17,9 @@ const Counter = ({
       <div className="counter-buttons">
         <Button click={onIncCounter}>Increment</Button>
         <Button click={onDecCounter}>Decrement</Button>
-        <Button click={onAdd5}>Add5</Button>
-        <Button click={onSubstract5}>Substract5</Button>
-        <Button click={onReset}>Reset</Button>
+        <Button click={onAdd5Counter}>Add5</Button>
+        <Button click={onSubstract5Counter}>Substract5</Button>
+        <Button click={onResetCounter}>Reset</Button>
       </div>
     </div>
   );
@@ -35,9 +35,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onIncCounter: () => dispatch({ type: actionTypes.INCREMENT }),
     onDecCounter: () => dispatch({ type: actionTypes.DECREMENT }),
-    onAdd5: () => dispatch({ type: actionTypes.ADD5 }),
-    onSubstract5: () => dispatch({ type: actionTypes.SUBSTRACT5 }),
-    onReset: () => dispatch({ type: actionTypes.RESET }),
+    onAdd5Counter: () => dispatch({ type: actionTypes.ADD5, value: 5 }),
+    onSubstract5Counter: () =>
+      dispatch({ type: actionTypes.SUBSTRACT5, value: 5 }),
+    onResetCounter: () => dispatch({ type: actionTypes.RESET }),
   };
 };
 
