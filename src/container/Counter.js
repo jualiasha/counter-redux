@@ -10,6 +10,9 @@ const Counter = ({
   onAdd5Counter,
   onSubstract5Counter,
   onResetCounter,
+  storeResults,
+  onShowResults,
+  onRemoveResults,
 }) => {
   return (
     <div>
@@ -21,6 +24,17 @@ const Counter = ({
         <Button click={onSubstract5Counter}>Substract5</Button>
         <Button click={onResetCounter}>Reset</Button>
       </div>
+      <Button click={onShowResults}>Store the Results</Button>
+
+      <ul>
+        {storeResults.map((result) => {
+          return (
+            <li key={result.id} onClick={() => onRemoveResults(result.id)}>
+              {result.value}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
@@ -28,6 +42,7 @@ const Counter = ({
 const mapStateToProps = (state) => {
   return {
     ctr: state.counter,
+    storeResults: state.results,
   };
 };
 
@@ -39,6 +54,9 @@ const mapDispatchToProps = (dispatch) => {
     onSubstract5Counter: () =>
       dispatch({ type: actionTypes.SUBSTRACT5, value: 5 }),
     onResetCounter: () => dispatch({ type: actionTypes.RESET }),
+    onShowResults: () => dispatch({ type: actionTypes.SHOW_RESULTS }),
+    onRemoveResults: (id) =>
+      dispatch({ type: actionTypes.REMOVE_RESULTS, item: id }),
   };
 };
 
